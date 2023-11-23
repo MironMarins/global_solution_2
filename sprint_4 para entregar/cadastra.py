@@ -1,36 +1,22 @@
-import datetime as dt
 
 
-def cadastraV(id,data):
+
+def cadastraDoacao(id,data,nome):
     
-    V = {}
+    D = {}
     
-    V['CodigoCliente'] = id
+    D['idUsuario'] = id
     
-    placa = str(input('Por favor nos Informe numero da placa de seu veiculo: '))
-    V['placa'] = placa
+    aux = float(input("escreva o valor que gostaria de doar(0.0)? "))
+    D['valor'] = aux
 
-    aux = str(input("Qual marca de seu veiculo: "))
-    V['marca'] = aux
+    aux = str(input("Qual a forma de pagamento? "))
+    D['forma'] = aux
 
-    aux = float(input("Quanto seu veiculo pesa em toneladas (0.0): "))
-    V['peso'] = aux
+    D['data'] = data
+    D['usuario'] = nome
+    return D
 
-    aux = float(input("Quanto seu veiculo mede em comprimento em metros(0.0): "))
-    V['comprimento'] = aux
-
-    aux = float(input("Qual a largura de seu veiculo em metros (0.0): "))
-    V['largura'] = aux
-
-    aux = float(input("Qual a altura de seu veiculo em metros (0.0): "))
-    V['altura'] = aux
-
-    aux = int(input("por ultimo, quantos eixos seu veiculo possui: "))
-    V['eixos'] = aux
-    
-    V['data'] = data
-
-    return V
 def seuVeiculo(idveiculo,id,placa,marca,peso,comprimento,largura,altura,eixos,data):
     V = {}
     V['idveiculo'] = idveiculo
@@ -80,7 +66,9 @@ def cadastraCliente(data):
     #idCliente = cliente['id']
     #listaIdCliente.append(idCliente)
     return cliente
+usuario = cadastraCliente(data="dsgfh")
 
+print(usuario)
 def seuCadastro(id,nome,cpf,data):
     cli = {}
     cli['CodigoCliente'] = id

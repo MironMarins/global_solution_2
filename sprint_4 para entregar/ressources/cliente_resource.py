@@ -20,7 +20,7 @@ def create(cliente):
                 sql = """
                 INSERT INTO t_vs_usuario (id_usuario, no_usuario, nr_cpf, nr_rg, lg_usuario, sh_usuario,
                   dt_nascimento, fl_sexo_biologico, ds_estado_civil, nm_grupo_sanguineo, dt_cadastro, nm_usuario)
-                VALUES (seq_cliente.nextval, :nome, :cpf, :rg, :login,:senha, to_date(:nascimento, 'DD/MM/YYYY'), :sexo, :estadoCivil, :sangue, to_date(:data, 'DD/MM/YYYY'), :nome)
+                VALUES (seq_usuario.nextval, :nome, :cpf, :rg, :login,:senha, to_date(:nascimento, 'DD/MM/YYYY'), :sexo, :estadoCivil, :sangue, to_date(:data, 'DD/MM/YYYY'), :nome)
                 """
                 cur.execute(sql, cliente)
             
