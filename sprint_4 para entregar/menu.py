@@ -1,10 +1,10 @@
 #mostrará o menu principal do programa
 def menu():
    
-    print("1 - gostaria conferir os maiores doadores")
+    print("1 - gostaria conferir o ranking dos maiores doadores")
     print("2 - gostaria de realizar uma doação")
-    print("3 - gostaria me informar sobre casos relatados")
-    print("4 - gostaria alterar minhas informações")
+    print("3 - gostaria de alterar uma informação")
+    print("4 - gostaria de consultar meus dados")
     print("5 - gostaria de deletar minhas informações")
     print("6 - sair")
     return int(input('escolha: '))

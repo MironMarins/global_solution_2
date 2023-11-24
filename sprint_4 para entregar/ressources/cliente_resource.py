@@ -10,7 +10,7 @@ dataHora = hoje.strftime('%d/%m/%Y %H:%M')
 
 # função responçavel por receber um as informações de uma 
 # dicionario e usar essas informações para montar uma linha na tabela
-#  t_porto_cliente
+#  t_rs_usuario
 
 def create(cliente):
     try:
@@ -30,24 +30,8 @@ def create(cliente):
         print("Ocorreu um erro ao realizar seu cadastro.")
         raise error
 
-#função que trará uma lista de tuplas referente a tabela t_porto_cliente
-
-def find_all():
-    try:
-        with oracledb.connect(user=user, password=password, dsn=dsn) as con:
-            with con.cursor() as cur:
-                sql = 'SELECT * FROM t_porto_cliente'
-                cur.execute(sql)
-                return cur.fetchall()
-            
-    except Exception as error:
-        print("Ocorreu um erro na consulta ao seu cadastro")
-        raise error
-
-
-#função que trará uma tupla referente a uma linha da tabela t_porto_cliente, ulizando
-# o codigo de cliente providenciado por essa aplicação, que será correspondente 
-# a "cd_cliente"
+#função que trará uma tupla referente a uma linha da tabela t_vs_usuario, ulizando
+# o login de usuario e senha criada por ele proprio a "lg_usuario" e "sh_usuario"
 
 def find_one_by_SENHA(senha,login):
     try:
@@ -65,15 +49,15 @@ def find_one_by_SENHA(senha,login):
     except Exception as error:
         print("Ocorreu um erro na consulta ao seu cadastro")
         raise error
-print(find_one_by_SENHA(senha='1234',login='MironMarins'))
 
-#função que trará uma tupla referente a uma linha da tabela t_porto_cliente, ulizando
-# o id de cliente que será correspondente a "id_cliente"
+
+#função que trará uma tupla referente a uma linha da tabela t_rs_usuario, ulizando
+# o id de usuario que será correspondente a "id_usuario"
 def find_one_by_id(id):
     try:
         with oracledb.connect(user=user, password=password, dsn=dsn) as con:
             with con.cursor() as cur:
-                sql = 'SELECT * FROM t_porto_cliente WHERE id_cliente = :id'
+                sql = 'SELECT * FROM t_ts_usuario WHERE id_usuario = :id'
                 cur.execute(sql, { 'id': id  })
                 resp = cur.fetchall()
 
@@ -88,9 +72,9 @@ def find_one_by_id(id):
 
 
 
-#função responsavel por alterar informações na tabela t_porto_cliente
-#ela recebera o codigo correspondente a cd_cliente e um dicionario com novas informações 
-#que substituiram as informações correspondentes a mesma linha da informação cd_cliente
+#função responsavel por alterar informações na tabela t_vs_usuario
+#ela recebera o id correspondente a id_usuario e um dicionario com novas informações 
+#que substituiram as informações correspondentes a mesma linha da informação id_usuario
 def update(cliente, id):
     try:
         with oracledb.connect(user=user, password=password, dsn=dsn) as con:
@@ -105,15 +89,15 @@ def update(cliente, id):
         print("Ocorreu um erro ao atualizar seu cadastro.")
         raise erro
 
-#função reponsalvel por deletar uma linha da tabela t_porto_cliente correspondente ao 
-# codigo de um cliente "correspondente a "cd_cliente"
+#função responsavel por deletar uma linha da tabela t_vs_usuario correspondente ao 
+#ao login de usuario e senha criada por ele proprio, "lg_usuario" e "sh_usuario"
 
 def delete(senha,login):
     try:
         with oracledb.connect(user=user, password=password, dsn=dsn) as con:
 
             with con.cursor() as cur:
-                sql = 'DELETE FROM t_porto_cliente WHERE sh_usuario = :senha and lg_usuario= :login'
+                sql = 'DELETE FROM t_vs_usuario WHERE sh_usuario = :senha and lg_usuario= :login'
                 cur.execute(sql, { 'senha': senha, 'login':login })
                 affected_rows = cur.rowcount
             con.commit()
