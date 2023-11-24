@@ -1,7 +1,7 @@
 #mostrará o menu principal do programa
 def menu():
    
-    print("1 - gostaria de relatar um caso de meningite")
+    print("1 - gostaria conferir os maiores doadores")
     print("2 - gostaria de realizar uma doação")
     print("3 - gostaria me informar sobre casos relatados")
     print("4 - gostaria alterar minhas informações")
@@ -12,13 +12,11 @@ def menu():
 #banco de dados
 def seuUsuario(usuario):
     print("Qual informação gostaria de alterar? ")
-    print("[1] peso: ",usuario[2])
-    print("[2] comprimento: ",usuario[3])
-    print("[3] largura: ",usuario[4])
-    print("[4] altura: ",usuario[5])
-    print("[5] eixos: ",usuario[6])
-    print("[6] placa: ",usuario[7])
-    print("[7] marca: ",usuario[8])
+    print("[1] nome: ",usuario[1])
+    print("[2] login: ",usuario[4])
+    print("[3] senha: ",usuario[5])
+    print("[4] estado civil: ",usuario[8])
+    
 
 def tenhoCadastro():
     print("já possuí cadastro em nosso aplicativo?")

@@ -96,8 +96,8 @@ def update(cliente, id):
         with oracledb.connect(user=user, password=password, dsn=dsn) as con:
                                          
             with con.cursor() as cur:
-                sql = """UPDATE t_porto_cliente SET nm_cliente=:nome, nr_cpf=:cpf,dt_cadastro=:data WHERE cd_cliente = :CodigoCliente"""
-                cur.execute(sql, { **cliente, 'CodigoCliente': id })
+                sql = """UPDATE t_vs_usuario SET no_usuario=:nome, nr_cpf=:cpf,nm_rg=:rg, lg_usuario=:login, sh_usuario=:senha, dt_nascimento=:nascimento, fl_sexo_biologico=:sexo, ds_estado_civil=:estadoCivil, nm_grupo_sanguineo=:sangue,dt_cadastro=:data, nm_usuario=:nome WHERE id_usuario = :id"""
+                cur.execute(sql, { **cliente, 'id': id })
             
             con.commit()
 
@@ -108,13 +108,13 @@ def update(cliente, id):
 #função reponsalvel por deletar uma linha da tabela t_porto_cliente correspondente ao 
 # codigo de um cliente "correspondente a "cd_cliente"
 
-def delete(codigo):
+def delete(senha,login):
     try:
         with oracledb.connect(user=user, password=password, dsn=dsn) as con:
 
             with con.cursor() as cur:
-                sql = 'DELETE FROM t_porto_cliente WHERE cd_cliente = :codigo'
-                cur.execute(sql, { 'codigo': codigo })
+                sql = 'DELETE FROM t_porto_cliente WHERE sh_usuario = :senha and lg_usuario= :login'
+                cur.execute(sql, { 'senha': senha, 'login':login })
                 affected_rows = cur.rowcount
             con.commit()
             return  affected_rows
